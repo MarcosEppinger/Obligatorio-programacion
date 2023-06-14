@@ -7,11 +7,14 @@ class Sistema{
 	agregarEmpresa(unaEmpresa){
 		this.listaEmpresas.push(unaEmpresa);
 	}
-	darTodos(){
+	darEmpresas(){
 		return this.listaEmpresas;
 	}
 	agregarReclamo(unReclamo){
 		this.listaReclamos.push(unReclamo);
+	}
+	darReclamos(){
+		return this.listaReclamos;
 	}
 }
 

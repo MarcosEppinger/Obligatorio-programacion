@@ -24,7 +24,7 @@ function agregarEmpresa(){
 function cargarOption(){
 	let lista = document.getElementById("idEmpresa");
 	lista.innerHTML = "";
-	let datos = sistema.darTodos();
+	let datos = sistema.darEmpresas();
 	for (let elem of datos){
 		let nodo = document.createElement("option");
 		let nodoTexto = document.createTextNode(elem);
@@ -43,6 +43,39 @@ function agregarReclamo(){
 		let texto = document.getElementById("idReclamoTexto").value;
 		sistema.agregarReclamo(new Reclamo(nom, emp, reclamo, texto))
 		miForm.reset();
+		
+		
 		//actualizar();
+		agregarArt();
+	}
+}
+
+function agregarArt(){
+	let datos = sistema.darReclamos();
+	let section = document.getElementById("idIngresados");
+	section.innerHTML = ""
+	let h3 = document.createElement("h3");
+	let tit = document.createTextNode("Reclamos Ingresados (los más recientes primero)")
+	h3.appendChild(tit);
+	section.appendChild(h3)
+	let art = document.createElement("article");
+	for (let i = datos.length - 1; i>=0 ; i--) {
+		
+		let art1 = section.appendChild(art);
+		let h4 = document.createElement("h4")
+		let re = document.createTextNode('Reclamo N. ' + parseInt(i+1));
+		h4.appendChild(re);
+		art1.appendChild(h4);
+
+		let div = art.appendChild(document.createElement("div"));
+		
+		let p1 = document.createElement("p");
+		p1.innerHTML =  datos[i].nombre + ": " + datos[i].reclamo;
+		let p2 = document.createElement("p");
+		p2.innerHTML =  "Empresa: " + datos[i].empresa;
+		let p3 = document.createElement("p");
+		p3.innerHTML =  datos[i].texto;
+
+		div.append(p1, p2, p3);
 	}
 }
