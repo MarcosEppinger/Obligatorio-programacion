@@ -27,6 +27,13 @@ class Sistema{
 		}
 	return arr;
 	}
+	darMayorRubro(){
+		let arr = Array.from(this.listaEmpresas);
+		suma = 0;
+		for (let elem of arr){
+			
+		}
+	}
 }
 
 class Empresa{
