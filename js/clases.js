@@ -1,6 +1,6 @@
 class Sistema{
 	constructor(){
-		this.listaEmpresas=[];
+		this.listaEmpresas= [];
 		this.listaEmpresas.push(new Empresa('Epp', 'Veracierto', 'Bobinados'));
 		this.listaReclamos = [];
 	}
@@ -17,7 +17,7 @@ class Sistema{
 		return this.listaReclamos;
 	}
 	darEmpresasSin(){
-		let arr = this.listaEmpresas;
+		let arr = Array.from(this.listaEmpresas);
 		for (let emp of this.listaEmpresas){
 			for (let rec of this.listaReclamos){
 				if (rec.empresa === emp.nombre){

@@ -11,6 +11,7 @@ function inicio(){
 
 function actualizar(){
 	mostrarEmpresasSin();
+	cargarOption()
 }	
 
 
@@ -87,8 +88,15 @@ function mostrarEmpresasSin(){
 	let array = sistema.darEmpresasSin();
 	let ul = document.getElementById("idSinRec");
 	ul.innerHTML = "";
-	if (array.length != 0){
-		for (let elem of array){
+	if (array.length == 0){
+		let li = document.createElement('li')
+		let texto = document.createTextNode("No hay empresas sin reclamos.")
+		li.appendChild(texto);
+		ul.appendChild(li);	
+		
+	}else{	
+		
+			for (let elem of array){
 			let li = document.createElement('li')
 			let texto = document.createTextNode(
 				elem.nombre + " (" + elem.direccion + ") " + "Rubro: " + elem.rubro);
