@@ -6,9 +6,14 @@ function inicio(){
 	document.getElementById("idBtnD").addEventListener("click", agregarEmpresa)
 	document.getElementById("idBtnD").addEventListener("click", cargarOption)
 	document.getElementById("idBtnReclamo").addEventListener("click", agregarReclamo)
+	actualizar();
 }
 
-	
+function actualizar(){
+	mostrarEmpresasSin();
+}	
+
+
 function agregarEmpresa(){
 	let miForm = document.getElementById("idFormEmpresa")
 	if(miForm.reportValidity()){
@@ -17,7 +22,7 @@ function agregarEmpresa(){
 		let rubro=document.getElementById("idRubroD").value;
 		sistema.agregarEmpresa(new Empresa(nom, dire, rubro))
 		miForm.reset();
-		//actualizar();
+		actualizar();
 	}
 }
 
@@ -43,10 +48,8 @@ function agregarReclamo(){
 		let texto = document.getElementById("idReclamoTexto").value;
 		sistema.agregarReclamo(new Reclamo(nom, emp, reclamo, texto))
 		miForm.reset();
-		
-		
-		//actualizar();
 		agregarArt();
+		actualizar();
 	}
 }
 
@@ -79,3 +82,19 @@ function agregarArt(){
 		div.append(p1, p2, p3);
 	}
 }
+
+function mostrarEmpresasSin(){
+	let array = sistema.darEmpresasSin();
+	let ul = document.getElementById("idSinRec");
+	ul.innerHTML = "";
+	if (array.length != 0){
+		for (let elem of array){
+			let li = document.createElement('li')
+			let texto = document.createTextNode(
+				elem.nombre + " (" + elem.direccion + ") " + "Rubro: " + elem.rubro);
+			li.appendChild(texto);
+			ul.appendChild(li);
+		}
+	}
+}	
+			

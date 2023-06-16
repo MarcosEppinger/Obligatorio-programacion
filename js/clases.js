@@ -16,24 +16,35 @@ class Sistema{
 	darReclamos(){
 		return this.listaReclamos;
 	}
+	darEmpresasSin(){
+		let arr = this.listaEmpresas;
+		for (let emp of this.listaEmpresas){
+			for (let rec of this.listaReclamos){
+				if (rec.empresa === emp.nombre){
+					arr.shift()
+				}
+			}
+		}
+	return arr;
+	}
 }
 
 class Empresa{
 	constructor(nombre, direccion, rubro){
-		this.nombreE=nombre
+		this.nombre=nombre
 		this.direccion=direccion
 		this.rubro=rubro
 	}
 	toString(){
-		return this.nombreE;
+		return this.nombre
 	}
 	
 }
 
 class Reclamo{
-	constructor(nombre, Empresa, reclamo, texto){
+	constructor(nombre, empresa, reclamo, texto){
 		this.nombre=nombre
-		this.empresa=Empresa
+		this.empresa=empresa
 		this.reclamo=reclamo
 		this.texto=texto
 	}
