@@ -109,29 +109,16 @@ function mostrarEmpresasSin(){
 	}
 }	
 
-function tabla(){
+/*function tabla(){
 	const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
     tbody.innerHTML = "";
-}
+}*/
 
 function crearTabla(){
 	let table = document.getElementById("idTabla")
-	let rowCount = table.rows.length;
+	table.innerHTML = ""
+	//add thead
 	
-	//const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
-    //tbody.innerHTML = "";
-	
-	
-	
-	//for (i = 1; i < rowCount; i++){
-		//if (table.rows.length == rowCount){
-		//alert(rowCount)
-			
-		//table.deleteRow(i);
-		//alert(table.rows.lenght)
-	//}
-	//}
-	//alert('listo')
 	let body = document.createElement("tbody")
 	table.appendChild(body);
 	for (let elem of sistema.listaEmpresas){
@@ -151,3 +138,17 @@ function crearTabla(){
 		
 	}
 }
+//const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
+    //tbody.innerHTML = "";
+	
+	//let rowCount = table.rows.length;
+	
+	//for (i = 1; i < rowCount; i++){
+		//if (table.rows.length == rowCount){
+		//alert(rowCount)
+			
+		//table.deleteRow(i);
+		//alert(table.rows.lenght)
+	//}
+	//}
+	//alert('listo')
