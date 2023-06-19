@@ -7,11 +7,13 @@ function inicio(){
 	document.getElementById("idBtnD").addEventListener("click", cargarOption)
 	document.getElementById("idBtnReclamo").addEventListener("click", agregarReclamo)
 	actualizar();
+	tabla()
 }
 
 function actualizar(){
 	mostrarEmpresasSin();
-	cargarOption()
+	cargarOption();
+	crearTabla();
 }	
 
 
@@ -82,6 +84,7 @@ function agregarArt(){
 
 		div.append(p1, p2, p3);
 	}
+	actualizar();
 }
 
 function mostrarEmpresasSin(){
@@ -105,4 +108,46 @@ function mostrarEmpresasSin(){
 		}
 	}
 }	
+
+function tabla(){
+	const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
+    tbody.innerHTML = "";
+}
+
+function crearTabla(){
+	let table = document.getElementById("idTabla")
+	let rowCount = table.rows.length;
+	
+	//const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
+    //tbody.innerHTML = "";
+	
+	
+	
+	//for (i = 1; i < rowCount; i++){
+		//if (table.rows.length == rowCount){
+		//alert(rowCount)
 			
+		//table.deleteRow(i);
+		//alert(table.rows.lenght)
+	//}
+	//}
+	//alert('listo')
+	let body = document.createElement("tbody")
+	table.appendChild(body);
+	for (let elem of sistema.listaEmpresas){
+		let tr = document.createElement("tr");
+		let td1 = document.createElement('td');
+		let td2 = document.createElement('td');
+		let td3 = document.createElement('td');
+		//let td4 = document.createElement('td');
+		td1.innerHTML = elem.nombre;
+		td2.innerHTML = elem.direccion;
+		td3.innerHTML = elem.rubro;
+		//td4.innerHTML = elem.cantidad;
+		tr.append(td1, td2, td3);
+		body.appendChild(tr);
+
+		
+		
+	}
+}
