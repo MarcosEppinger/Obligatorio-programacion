@@ -83,23 +83,34 @@ function agregarArt(){
 		let p3 = document.createElement("p");
 		p3.innerHTML =  datos[i].texto;
 
+		div.append(p1, p2, p3,);
+		
 		let boton = document.createElement("button");
 		boton.id = "IdBotonArt" + i;
 		boton.innerHTML = "A mi También me pasó!";
 		boton.className = "btn";
+		let conta = 0
+		div.append(boton);
+		boton.onclick = function(){
+			
+			conta++;
+			let cont = document.createTextNode(" Contador: "+ conta)
+			
+			div.append(cont);
+		}
 		
 		
-		div.append(p1, p2, p3, boton,);
+		
 	
-		let cont = document.createTextNode(" Contador: "+ contador())
-		div.append(cont);
+		//let cont = document.createTextNode(" Contador: "+ conta)
+		
 	}
 	actualizar();
 }
 
-document.getElementsByClassName("btn").addEventListener("click", contador);
+//document.getElementsByClassName("btn").addEventListener("click", contador);
 
-function contador(){
+/*function contador(){
 	
 	let cont = 0;
 	for (i = 0; i < sistema.listaReclamos.length; i++ ){
@@ -111,7 +122,7 @@ function contador(){
 	
 	}
 return cont
-}
+}*/
 
 function mostrarEmpresasSin(){
 	let array = sistema.darEmpresasSin();
