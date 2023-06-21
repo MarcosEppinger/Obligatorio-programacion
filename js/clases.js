@@ -16,6 +16,9 @@ class Sistema{
 	darReclamos(){
 		return this.listaReclamos;
 	}
+	darUltimoReclamo(){
+		return this.listaReclamos.slice(-1);
+	}
 	darEmpresasSin(){
 		let arr = Array.from(this.listaEmpresas);
 		for (let emp of this.listaEmpresas){

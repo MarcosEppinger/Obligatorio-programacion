@@ -58,6 +58,58 @@ function agregarReclamo(){
 }
 
 function agregarArt(){
+	let datos = sistema.darUltimoReclamo();
+	let section = document.getElementById("idIngresados");
+	let cantidad = sistema.listaReclamos.length;
+	//section.innerHTML = ""
+	//let h3 = document.createElement("h3");
+	//let tit = document.createTextNode("Reclamos Ingresados (los más recientes primero)")
+	//h3.appendChild(tit);
+	//section.appendChild(h3)
+	let art = document.createElement("article");
+
+	//for (let i = 1; i<= datos.length ; i++) {
+		
+	//let theFirstChild = section.firstChild;
+	//let art1 = section.insertBefore(art, theFirstChild);
+	let art1 = section.insertBefore(art, section.childNodes[2]);
+	let h4 = document.createElement("h4");
+	let re = document.createTextNode('Reclamo N. ' + cantidad);
+	h4.appendChild(re);
+	art1.appendChild(h4);
+
+	let div = art.appendChild(document.createElement("div"));
+
+	let p1 = document.createElement("p");
+	p1.innerHTML =  datos[0].nombre + ": " + datos[0].reclamo;
+	let p2 = document.createElement("p");
+	p2.innerHTML =  "Empresa: " + datos[0].empresa;
+	let p3 = document.createElement("p");
+	p3.innerHTML =  datos[0].texto;
+
+	div.append(p1, p2, p3);
+	
+	let boton = document.createElement("button");
+	boton.id = "IdBotonArt" + cantidad;
+	boton.innerHTML = "¡A mi También me pasó!";
+	boton.className = "btn";
+	div.append(boton);
+	
+	let contador = 0
+	let cont = document.createTextNode(" Contador: " + 0);
+	div.append(cont);
+	
+	boton.onclick = function(){
+		cont.parentNode.removeChild(cont);
+		contador++;
+		cont = document.createTextNode(" Contador: "+ contador)
+		
+		div.append(cont);
+	}
+	actualizar();
+}
+
+/*function agregarArt(){
 	let datos = sistema.darReclamos();
 	let section = document.getElementById("idIngresados");
 	section.innerHTML = ""
@@ -87,26 +139,26 @@ function agregarArt(){
 		
 		let boton = document.createElement("button");
 		boton.id = "IdBotonArt" + i;
-		boton.innerHTML = "A mi También me pasó!";
+		boton.innerHTML = "¡A mi También me pasó!";
 		boton.className = "btn";
-		let conta = 0
 		div.append(boton);
+		
+		let contador = 0
+		let cont = document.createTextNode(" Contador: " + 0);
+		div.append(cont);
+		
 		boton.onclick = function(){
-			
-			conta++;
-			let cont = document.createTextNode(" Contador: "+ conta)
+			cont.parentNode.removeChild(cont);
+			contador++;
+			cont = document.createTextNode(" Contador: "+ contador)
 			
 			div.append(cont);
 		}
-		
-		
-		
-	
-		//let cont = document.createTextNode(" Contador: "+ conta)
-		
 	}
 	actualizar();
-}
+}*/
+
+		
 
 //document.getElementsByClassName("btn").addEventListener("click", contador);
 
@@ -135,16 +187,16 @@ function mostrarEmpresasSin(){
 		ul.appendChild(li);	
 		
 	}else{	
-		
-			for (let elem of array){
-			let li = document.createElement('li')
-			let texto = document.createTextNode(
-				elem.nombre + " (" + elem.direccion + ") " + "Rubro: " + elem.rubro);
-			li.appendChild(texto);
-			ul.appendChild(li);
+		for (let elem of array){
+		let li = document.createElement('li')
+		let texto = document.createTextNode(
+			elem.nombre + " (" + elem.direccion + ") " + "Rubro: " + elem.rubro);
+		li.appendChild(texto);
+		ul.appendChild(li);
 		}
 	}
 }	
+		
 
 function crearTabla(){
 	let table = document.getElementById("idTabla")
