@@ -109,17 +109,26 @@ function mostrarEmpresasSin(){
 	}
 }	
 
-/*function tabla(){
-	const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
-    tbody.innerHTML = "";
-}*/
-
 function crearTabla(){
 	let table = document.getElementById("idTabla")
 	table.innerHTML = ""
-	//add thead
-	
-	let body = document.createElement("tbody")
+	let caption = document.createElement("caption");
+	caption.innerHTML = "Empresas que empiezan con";
+	table.appendChild(caption);
+	let head = document.createElement("thead");
+	let trh = document.createElement("tr");
+	let th1 = document.createElement("th");
+	let th2 = document.createElement("th");
+	let th3 = document.createElement("th");
+	let th4 = document.createElement("th");
+	th1.innerHTML = "Nombre";
+	th2.innerHTML = "Dirección";
+	th3.innerHTML = "Rubro";
+	th4.innerHTML = "Cantidad";
+	trh.append(th1, th2, th3, th4);
+	head.appendChild(trh);
+	table.appendChild(head);
+	let body = document.createElement("tbody");
 	table.appendChild(body);
 	for (let elem of sistema.listaEmpresas){
 		let tr = document.createElement("tr");
@@ -138,17 +147,3 @@ function crearTabla(){
 		
 	}
 }
-//const tbody = document.getElementById("idTabla").getElementsByTagName('tbody')[0];
-    //tbody.innerHTML = "";
-	
-	//let rowCount = table.rows.length;
-	
-	//for (i = 1; i < rowCount; i++){
-		//if (table.rows.length == rowCount){
-		//alert(rowCount)
-			
-		//table.deleteRow(i);
-		//alert(table.rows.lenght)
-	//}
-	//}
-	//alert('listo')
