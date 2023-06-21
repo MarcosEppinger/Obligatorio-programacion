@@ -6,14 +6,15 @@ function inicio(){
 	document.getElementById("idBtnD").addEventListener("click", agregarEmpresa)
 	document.getElementById("idBtnD").addEventListener("click", cargarOption)
 	document.getElementById("idBtnReclamo").addEventListener("click", agregarReclamo)
+	
 	actualizar();
-	tabla()
 }
 
 function actualizar(){
 	mostrarEmpresasSin();
 	cargarOption();
 	crearTabla();
+	//document.getElementsByClassName("btn").addEventListener("click", contador)
 }	
 
 
@@ -82,9 +83,34 @@ function agregarArt(){
 		let p3 = document.createElement("p");
 		p3.innerHTML =  datos[i].texto;
 
-		div.append(p1, p2, p3);
+		let boton = document.createElement("button");
+		boton.id = "IdBotonArt" + i;
+		boton.innerHTML = "A mi También me pasó!";
+		boton.className = "btn";
+		
+		
+		div.append(p1, p2, p3, boton,);
+	
+		let cont = document.createTextNode(" Contador: "+ contador())
+		div.append(cont);
 	}
 	actualizar();
+}
+
+document.getElementsByClassName("btn").addEventListener("click", contador);
+
+function contador(){
+	
+	let cont = 0;
+	for (i = 0; i < sistema.listaReclamos.length; i++ ){
+		let num = document.getElementById("IdBotonArt" + i)
+		num.onclick = function(){
+			cont++
+		}
+		
+	
+	}
+return cont
 }
 
 function mostrarEmpresasSin(){
