@@ -4,7 +4,6 @@ class Sistema{
 		this.listaEmpresas.push(new Empresa('ModoViajes SA', 'Av Italia 51515', 'Viajes'));
 		this.listaReclamos = [];
 		this.letraSeleccionada = "*";
-		this.listaBotones = [];
 	}
 	agregarEmpresa(unaEmpresa){
 		this.listaEmpresas.push(unaEmpresa);
@@ -21,7 +20,6 @@ class Sistema{
 	darUltimoReclamo(){
 		return this.listaReclamos.slice(-1);
 	}
-	
 	darCantidadDeReclamos(emp){
 		let suma = 0;
 		for (let elem of this.listaReclamos){
@@ -61,22 +59,36 @@ class Sistema{
         });
     }
 	darEmpresasSin(){
-		let arr = Array.from(this.listaEmpresas);
+		let empresasSinReclamos = [];
 		for (let emp of this.listaEmpresas){
+			let tieneReclamos = false;
 			for (let rec of this.listaReclamos){
 				if (rec.empresa === emp.nombre){
-					arr.shift()
+					tieneReclamos = true
+					break;
 				}
 			}
+			if (!tieneReclamos){
+				empresasSinReclamos.push(emp)
+			}
 		}
-	return arr;
+	return empresasSinReclamos;
+	}
+	darEmpresasCon(){
+		let arraySin = Array.from(this.darEmpresasSin());
+		let arrayComp = Array.from(this.listaEmpresas)
+		let dif = arrayComp.filter(x => !arraySin.includes(x));
+		return dif;
 	}
 	darMayorRubro(){
-		let arr = Array.from(this.listaEmpresas);
-		suma = 0;
-		for (let elem of arr){
-			
+		let arr = []
+		let array = Array.from(this.darEmpresasCon())
+		//suma = 0;
+		for (let elem of array){
+			arr.push(elem.rubro)
+	
 		}
+	console.log (arr)	
 	}
 }
 

@@ -212,8 +212,8 @@ function estadisticas(){
 	for (let elem of sistema.listaReclamos){
 		sumaReclamos++
 	}
-	let promedio = (sumaReclamos/sumaEmpresas).toFixed(2);
-	if (promedio == 0.00){
+	let promedio = (sumaReclamos/sumaEmpresas).toFixed(1);
+	if (promedio == 0.0){
 		p2.innerHTML = "El promedio de las cantidades considerando todos los reclamos " +
 		"de todas las empresas es 0";
 	}else{
