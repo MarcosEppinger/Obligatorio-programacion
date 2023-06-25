@@ -1,9 +1,10 @@
 class Sistema{
 	constructor(){
 		this.listaEmpresas = [];
-		this.listaEmpresas.push(new Empresa('TodoViajes SA', 'Av Italia 51515', 'Viajes'));
+		this.listaEmpresas.push(new Empresa('ModoViajes SA', 'Av Italia 51515', 'Viajes'));
 		this.listaReclamos = [];
-		this.letraSeleccionada = "";
+		this.letraSeleccionada = "*";
+		this.listaBotones = [];
 	}
 	agregarEmpresa(unaEmpresa){
 		this.listaEmpresas.push(unaEmpresa);
@@ -23,7 +24,7 @@ class Sistema{
 	obtenerEmpresasFlitradas(){
 		let lista = []
         if (this.letraSeleccionada === "*"){
-			lista = listaEmpresas;
+			lista = this.listaEmpresas;
 		}else{
 			for (let i = 0; i < this.listaEmpresas.length; i++) {
             	let emp = this.listaEmpresas[i];
@@ -36,16 +37,17 @@ class Sistema{
         return lista;
 	}
 	obtenerEmpresasCreciente(){
-        let arr = Array.from(this.listaEmpresas);
+        
+		let arr = Array.from(this.obtenerEmpresasFlitradas());
 		return arr.sort(function(e1, e2){
             return e1.nombre.localeCompare(e2.nombre);
         });
     }
 
     obtenerEmpresasDecreciente(){
-        let arr = Array.from(this.listaEmpresas);
+        let arr = Array.from(this.obtenerEmpresasFlitradas());
 		return arr.sort(function(e1, e2){
-            return e2.nombre.localeCompare(e1.edad);
+            return e2.nombre.localeCompare(e1.nombre);
         });
     }
 	darEmpresasSin(){

@@ -124,14 +124,29 @@ function crearBotoneria(){
 	art.innerHTML = "";
 	btn = document.createElement("button");
 	btn.innerHTML = "*"
+	btn.onclick = function(){
+		sistema.letraSeleccionada = "*"
+		crearTabla();
+	}
+	art.appendChild(btn);
+	let letrasUsadas = [];
 	for (let i=0; i< sistema.listaEmpresas.length; i++ ){
-		let boton = document.createElement("button")
+		
 		letra = sistema.listaEmpresas[i].nombre.charAt(0).toUpperCase();
-		boton.innerHTML = letra
-		boton.id = "IdBotoneria" + letra
-		art.appendChild(boton);
-		boton.onclick = function(){
-			sistema.letraSeleccionada = letra
+		
+		if (!(letrasUsadas.includes(letra))){
+			
+			
+			letrasUsadas.push(letra);
+			let boton = document.createElement("button");
+			boton.innerHTML = letra;
+			//boton.id = "IdBotoneria" + letra;
+			art.appendChild(boton);
+			boton.onclick = function(){
+				sistema.letraSeleccionada = boton.innerHTML;
+				crearTabla();
+
+			}
 		}
 	}
 }
@@ -159,13 +174,12 @@ function crearTabla(){
 	let body = document.createElement("tbody");
 	table.appendChild(body);
 	
-	let lista = ""
+	let lista = []
 	if(document.getElementById("idCre").checked){
         lista = sistema.obtenerEmpresasCreciente();    
     }else{
         lista = sistema.obtenerEmpresasDecreciente();    
     }
-	
 	for (let elem of lista){
 		let tr = document.createElement("tr");
 		let td1 = document.createElement('td');
