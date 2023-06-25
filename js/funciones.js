@@ -6,7 +6,8 @@ function inicio(){
 	document.getElementById("idBtnD").addEventListener("click", agregarEmpresa)
 	document.getElementById("idBtnD").addEventListener("click", cargarOption)
 	document.getElementById("idBtnReclamo").addEventListener("click", agregarReclamo)
-	
+	document.getElementById("idCre").addEventListener("click", crearTabla);
+    document.getElementById("idDecre").addEventListener("click", crearTabla);
 	actualizar();
 }
 
@@ -14,7 +15,6 @@ function actualizar(){
 	mostrarEmpresasSin();
 	cargarOption();
 	crearTabla();
-	//document.getElementsByClassName("btn").addEventListener("click", contador)
 }	
 
 
@@ -61,17 +61,7 @@ function agregarArt(){
 	let datos = sistema.darUltimoReclamo();
 	let section = document.getElementById("idIngresados");
 	let cantidad = sistema.listaReclamos.length;
-	//section.innerHTML = ""
-	//let h3 = document.createElement("h3");
-	//let tit = document.createTextNode("Reclamos Ingresados (los más recientes primero)")
-	//h3.appendChild(tit);
-	//section.appendChild(h3)
 	let art = document.createElement("article");
-
-	//for (let i = 1; i<= datos.length ; i++) {
-		
-	//let theFirstChild = section.firstChild;
-	//let art1 = section.insertBefore(art, theFirstChild);
 	let art1 = section.insertBefore(art, section.childNodes[2]);
 	let h4 = document.createElement("h4");
 	let re = document.createTextNode('Reclamo N. ' + cantidad);
@@ -98,7 +88,6 @@ function agregarArt(){
 	let contador = 0
 	let cont = document.createTextNode(" Contador: " + 0);
 	div.append(cont);
-	
 	boton.onclick = function(){
 		cont.parentNode.removeChild(cont);
 		contador++;
@@ -108,73 +97,6 @@ function agregarArt(){
 	}
 	actualizar();
 }
-
-/*function agregarArt(){
-	let datos = sistema.darReclamos();
-	let section = document.getElementById("idIngresados");
-	section.innerHTML = ""
-	let h3 = document.createElement("h3");
-	let tit = document.createTextNode("Reclamos Ingresados (los más recientes primero)")
-	h3.appendChild(tit);
-	section.appendChild(h3)
-	let art = document.createElement("article");
-	for (let i = datos.length - 1; i>=0 ; i--) {
-		
-		let art1 = section.appendChild(art);
-		let h4 = document.createElement("h4")
-		let re = document.createTextNode('Reclamo N. ' + parseInt(i+1));
-		h4.appendChild(re);
-		art1.appendChild(h4);
-
-		let div = art.appendChild(document.createElement("div"));
-		
-		let p1 = document.createElement("p");
-		p1.innerHTML =  datos[i].nombre + ": " + datos[i].reclamo;
-		let p2 = document.createElement("p");
-		p2.innerHTML =  "Empresa: " + datos[i].empresa;
-		let p3 = document.createElement("p");
-		p3.innerHTML =  datos[i].texto;
-
-		div.append(p1, p2, p3,);
-		
-		let boton = document.createElement("button");
-		boton.id = "IdBotonArt" + i;
-		boton.innerHTML = "¡A mi También me pasó!";
-		boton.className = "btn";
-		div.append(boton);
-		
-		let contador = 0
-		let cont = document.createTextNode(" Contador: " + 0);
-		div.append(cont);
-		
-		boton.onclick = function(){
-			cont.parentNode.removeChild(cont);
-			contador++;
-			cont = document.createTextNode(" Contador: "+ contador)
-			
-			div.append(cont);
-		}
-	}
-	actualizar();
-}*/
-
-		
-
-//document.getElementsByClassName("btn").addEventListener("click", contador);
-
-/*function contador(){
-	
-	let cont = 0;
-	for (i = 0; i < sistema.listaReclamos.length; i++ ){
-		let num = document.getElementById("IdBotonArt" + i)
-		num.onclick = function(){
-			cont++
-		}
-		
-	
-	}
-return cont
-}*/
 
 function mostrarEmpresasSin(){
 	let array = sistema.darEmpresasSin();
@@ -197,8 +119,25 @@ function mostrarEmpresasSin(){
 	}
 }	
 		
+function crearBotoneria(){
+	let art = document.getElementById("botoneria");
+	art.innerHTML = "";
+	btn = document.createElement("button");
+	btn.innerHTML = "*"
+	for (let i=0; i< sistema.listaEmpresas.length; i++ ){
+		let boton = document.createElement("button")
+		letra = sistema.listaEmpresas[i].nombre.charAt(0).toUpperCase();
+		boton.innerHTML = letra
+		boton.id = "IdBotoneria" + letra
+		art.appendChild(boton);
+		boton.onclick = function(){
+			sistema.letraSeleccionada = letra
+		}
+	}
+}
 
 function crearTabla(){
+	crearBotoneria();
 	let table = document.getElementById("idTabla")
 	table.innerHTML = ""
 	let caption = document.createElement("caption");
@@ -219,7 +158,15 @@ function crearTabla(){
 	table.appendChild(head);
 	let body = document.createElement("tbody");
 	table.appendChild(body);
-	for (let elem of sistema.listaEmpresas){
+	
+	let lista = ""
+	if(document.getElementById("idCre").checked){
+        lista = sistema.obtenerEmpresasCreciente();    
+    }else{
+        lista = sistema.obtenerEmpresasDecreciente();    
+    }
+	
+	for (let elem of lista){
 		let tr = document.createElement("tr");
 		let td1 = document.createElement('td');
 		let td2 = document.createElement('td');
