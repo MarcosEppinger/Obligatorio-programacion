@@ -15,6 +15,7 @@ function actualizar(){
 	mostrarEmpresasSin();
 	cargarOption();
 	crearTabla();
+	estadisticas()
 }	
 
 
@@ -196,4 +197,27 @@ function crearTabla(){
 		
 		
 	}
+}
+
+function estadisticas(){
+	let p = document.getElementById("idEregistradas");
+	let sumaEmpresas = 0;
+	for (let elem of sistema.listaEmpresas){
+		sumaEmpresas++
+	}
+	p.innerHTML = "Total de empresas registradas: " + sumaEmpresas;
+
+	let p2 = document.getElementById("idPromedio");
+	let sumaReclamos = 0;
+	for (let elem of sistema.listaReclamos){
+		sumaReclamos++
+	}
+	let promedio = (sumaReclamos/sumaEmpresas).toFixed(2);
+	if (promedio == 0.00){
+		p2.innerHTML = "El promedio de las cantidades considerando todos los reclamos " +
+		"de todas las empresas es 0";
+	}else{
+		p2.innerHTML = "El promedio de las cantidades considerando todos los reclamos " +
+		"de todas las empresas es " + promedio;
+	}	
 }

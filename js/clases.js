@@ -21,6 +21,7 @@ class Sistema{
 	darUltimoReclamo(){
 		return this.listaReclamos.slice(-1);
 	}
+	
 	darCantidadDeReclamos(emp){
 		let suma = 0;
 		for (let elem of this.listaReclamos){
