@@ -21,7 +21,16 @@ class Sistema{
 	darUltimoReclamo(){
 		return this.listaReclamos.slice(-1);
 	}
-	obtenerEmpresasFlitradas(){
+	darCantidadDeReclamos(emp){
+		let suma = 0;
+		for (let elem of this.listaReclamos){
+			if (elem.empresa == emp){
+					suma++;
+			}
+		}
+		return suma;
+	}
+	darEmpresasFlitradas(){
 		let lista = []
         if (this.letraSeleccionada === "*"){
 			lista = this.listaEmpresas;
@@ -36,16 +45,16 @@ class Sistema{
 			//ordenar lista
         return lista;
 	}
-	obtenerEmpresasCreciente(){
+	darEmpresasCreciente(){
         
-		let arr = Array.from(this.obtenerEmpresasFlitradas());
+		let arr = Array.from(this.darEmpresasFlitradas());
 		return arr.sort(function(e1, e2){
             return e1.nombre.localeCompare(e2.nombre);
         });
     }
 
-    obtenerEmpresasDecreciente(){
-        let arr = Array.from(this.obtenerEmpresasFlitradas());
+    darEmpresasDecreciente(){
+        let arr = Array.from(this.darEmpresasFlitradas());
 		return arr.sort(function(e1, e2){
             return e2.nombre.localeCompare(e1.nombre);
         });

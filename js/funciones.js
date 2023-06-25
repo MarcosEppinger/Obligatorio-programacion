@@ -176,21 +176,21 @@ function crearTabla(){
 	
 	let lista = []
 	if(document.getElementById("idCre").checked){
-        lista = sistema.obtenerEmpresasCreciente();    
+        lista = sistema.darEmpresasCreciente();    
     }else{
-        lista = sistema.obtenerEmpresasDecreciente();    
+        lista = sistema.darEmpresasDecreciente();    
     }
 	for (let elem of lista){
 		let tr = document.createElement("tr");
 		let td1 = document.createElement('td');
 		let td2 = document.createElement('td');
 		let td3 = document.createElement('td');
-		//let td4 = document.createElement('td');
+		let td4 = document.createElement('td');
 		td1.innerHTML = elem.nombre;
 		td2.innerHTML = elem.direccion;
 		td3.innerHTML = elem.rubro;
-		//td4.innerHTML = elem.cantidad;
-		tr.append(td1, td2, td3);
+		td4.innerHTML = sistema.darCantidadDeReclamos(elem);
+		tr.append(td1, td2, td3, td4);
 		body.appendChild(tr);
 
 		
