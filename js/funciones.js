@@ -107,6 +107,7 @@ function agregarArt(){
 	let datos = sistema.darUltimoReclamo();
 	let section = document.getElementById("idIngresados");
 	let cantidad = sistema.listaReclamos.length;
+	
 	let art = document.createElement("article");
 	let art1 = section.insertBefore(art, section.childNodes[2]);
 	let h4 = document.createElement("h4");
