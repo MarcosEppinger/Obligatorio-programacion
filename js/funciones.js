@@ -14,7 +14,6 @@ function inicio(){
     document.getElementById("mPrincipal").addEventListener("click", mostrarPrincipal);
     document.getElementById("mAgregarE").addEventListener("click", mostrarAgregarEmpresa);
     document.getElementById("mEstadisticas").addEventListener("click", mostrarEstadisticas);
-	
 	actualizar();
 	mostrarPrincipal();
 }
@@ -171,11 +170,11 @@ function crearBotoneria(){
 	art.innerHTML = "";
 	btn = document.createElement("button");
 	btn.innerHTML = "*"
+	btn.id = "butodos";
 	btn.onclick = function(){
 		sistema.letraSeleccionada = "*"
 		crearTabla();
 	}
-	art.appendChild(btn);
 	let letrasUsadas = [];
 	for (let i=0; i< sistema.listaEmpresas.length; i++ ){
 		
@@ -187,7 +186,7 @@ function crearBotoneria(){
 			letrasUsadas.push(letra);
 			let boton = document.createElement("button");
 			boton.innerHTML = letra;
-			//boton.id = "IdBotoneria" + letra;
+			boton.id = "but" + letra;
 			art.appendChild(boton);
 			boton.onclick = function(){
 				sistema.letraSeleccionada = boton.innerHTML;
@@ -196,6 +195,7 @@ function crearBotoneria(){
 			}
 		}
 	}
+	art.appendChild(btn);
 }
 
 function crearTabla(){
@@ -269,12 +269,12 @@ function estadisticas(){
 
 	let ul = document.getElementById("idUlMax");
 	ul.innerHTML = "";
-	let li = document.createElement('li')
 	
 	let res = sistema.darMayorRubro();
-	if (res == ": cantidad: 0"){
-		res = "No hay reclamos"
-	}
-	li.innerHTML = res;	
-	ul.appendChild(li);
+	
+	for (let i = 0; i < res.rubro.length; i++){
+		let li = document.createElement('li')
+		li.innerHTML = res.rubro[i] + ": " + res.cant;
+		ul.appendChild(li);
+	} 
 }

@@ -11,31 +11,32 @@
 	</head>
 	<body>
 		<header>
+<!-- NAVBAR -->
 		<ul>
 			<li><img src="./Imagenes/tusreclamos.png" alt="logo" id="logo"></li>
 			<li><a href="#idPrincipal" id="mPrincipal">Principal</a></li>
 			<li><a href="#idIngresados" id="mIngresados">Ver reclamos</a></li>
 			<li><a href="#idEstadisticas" id="mEstadisticas">Estadisticas</a></li>
 			<li><a href="#idAgregarE" id="mAgregarE">Agregar Empresa</a></li>
-			<li><input type="text" id="idBuscador"><img src="./Imagenes/lupa.png" alt="lupa" id="lupita"></li> 
+			<li><input type="text" id="idBuscador"><button><img src="./Imagenes/lupa.png" alt="lupa" id="lupita"></button></li> 
 		</ul>
-		</header>		
-		
+		</header>
+<!-- HOME - PRINCIPAL -->		
 		<section id="idPrincipal">
 			<h3>Sitio para la gestión de reclamos</h3>
 			<h4>Este sitio permite ingresar reclamos o quejas y realizar diversas consultas</h4>
 			<p>Sitio desarrollado en el curso de Programación I - 1er semestre 2023 - 
 			Universidad ORT Uruguay por:</p>
 			<br>
-			<img src="./Imagenes/marcos.jpg" alt="el mar" id="fotoperfil">
+			<a href="./Imagenes/marcos.jpg" target="_blank"><img src="./Imagenes/marcos.jpg" alt="el mar" id="fotoperfil"></a>
 			<p>Nombre y Apellido: Marcos Eppinger; Número de Estudiante: 203654</p>
 			<br>
-			<img src="./Imagenes/emma.jpg" alt="el emma" id="fotoperfil2">
+			<a href="./Imagenes/emma.jpg" target="_blank"><img src="./Imagenes/emma.jpg" alt="el emma" id="fotoperfil2"></a>
 			<p>Nombre y Apellido: Emmanuel Alvarez; Número de Estudiante: 271176</p>
 			<br>
 			<input type="button" id="idBoton" value="Agrega tu reclamo aquí">
 		</section>
-		
+<!-- RECLAMOS -->
 		<section id="idReclamos">
 			<h3>Agregar Reclamo</h3>
 			<form id="idFormReclamos">
@@ -55,26 +56,27 @@
 				<input type="button" id="idBtnReclamo" value="Agregar">
 			</form>
 		</section>
-		
+<!-- VER RECLAMOS -->
 		<section id="idIngresados">
 			<h3>Reclamos Ingresados (los más recientes primero)</h3>
+			<!-- Lo llena js -->
 		</section>
-		
 		<section id="idEstadisticas">
+<!-- ESTADISTICAS -->
 		<h3>Estadísticas</h3>
 		<h4>Empresas seleccionadas</h4>
+		<div class="botonestones">
 			<div class="container">
 				<article id="botoneria">
 					<!-- Lo llena js -->
 				</article>
 				<article>
-					<br>
-					<label for="idCre">Orden nombre creciente</label>
-					<input type="radio" id="idCre" name="ordenar" checked>
-					<label for="idDecre">Orden nombre decreciente</label>
-					<input type="radio" id="idDecre" name="ordenar">
-				
+				<input type="radio" id="idCre" name="ordenar" checked>
+						<label for="idCre">Orden nombre creciente</label>
+						<input type="radio" id="idDecre" name="ordenar">
+						<label for="idDecre">Orden nombre decreciente</label>	
 				</article>
+				</div>
 			</div>
 			<br>
 			<table id="idTabla">
@@ -101,9 +103,8 @@
 		<ul id="idUlMax">
 			<li>Viajes: cantidad: 4</li>
 		</ul>
-		
 		</section>
-		
+<!-- AGREGAR EMPRESA -->
 		<section id="idAgregarE">
 			<h3>Agregar Empresa</h3>
 			<h4>Datos</h4>
@@ -128,6 +129,5 @@
 				<input type="button" id="idBtnD" value="Agregar">
 			</form>
 		</section>
-		
 	</body>
 </html>	

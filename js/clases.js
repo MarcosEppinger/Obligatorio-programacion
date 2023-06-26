@@ -1,7 +1,8 @@
 class Sistema{
 	constructor(){
 		this.listaEmpresas = [];
-		this.listaEmpresas.push(new Empresa('ModoViajes SA', 'Av Italia 51515', 'Viajes'));
+		this.listaEmpresas.push(new Empresa('Alfa', '18 de Julio 12345', 'Muebles'));
+		this.listaEmpresas.push(new Empresa('TodoViajes SA', 'Av Italia 51515', 'Viajes'));
 		this.listaReclamos = [];
 		this.letraSeleccionada = "*";
 	}
@@ -50,7 +51,6 @@ class Sistema{
             	}
        		}
 		}
-			//ordenar lista
         return lista;
 	}
 	darEmpresasCreciente(){
@@ -90,30 +90,39 @@ class Sistema{
 		return dif;
 	}
 	darMayorRubro(){
-		let arr = []
-		let array = Array.from(this.darEmpresasCon())
-		//suma = 0;
-		for (let elem of array){
-			arr.push(elem.rubro)
-	
+		let rubros = ["Viajes",
+			"Restaurantes",
+			"Bancos",
+			"Muebles",
+			"Autos",
+			"Servicios",
+			"General"]
+		let arrayNum = [2, 2, 0, 0, 0, 0, 0]	
+		let arrayEmpresas = Array.from(this.darEmpresasCon())
+		let max = 0;
+		let res = { rubro: [], cant: 0 };
+		for (let i = 0; i < rubros.length; i++){
+			for (let elem of arrayEmpresas){
+				if (elem.rubro == rubros[i]){
+					arrayNum[i]++
+				}
+			}
 		}
-		//console.log (arr)
-
-		let contador = {};
-  		let maxRepetido = '';
-  		let maxCount = 0;
-
-  		for (let i = 0; i < arr.length; i++) {
-   			const elemento = arr[i];
-   			contador[elemento] = (contador[elemento] || 0) + 1;
-
-    	if (contador[elemento] > maxCount) {
-      		maxCount = contador[elemento];
-      		maxRepetido = elemento;
-    		}
-  		}
-
-		return maxRepetido + ": cantidad: " + maxCount;
+		for (let i = 0; i < arrayNum.length; i++){
+			if (arrayNum[i] > max){
+			max = arrayNum[i];
+			res = { rubro: [rubros[i]], cant: max };
+			}else
+			if (arrayNum[i] == max){
+				res.rubro.push(rubros[i]);
+			}
+		}
+		if (max == 0){
+			return "No hay datos"
+		}else{
+		
+		return res
+		}
 	}
 }		
 	

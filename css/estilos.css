@@ -1,5 +1,4 @@
 
-
 /*Marcos Eppinger 203654 - Emmanuel Alvarez 271176*/
 
 * {
@@ -70,10 +69,18 @@ section {
 #idNombre{
 	float: left 10px;
 }
-
+#idFormReclamos select{
+	width: 177px;
+}
 #idReclamos label {
 	float: left;
 	width: 100px;
+}
+#idReclamoTexto {
+	width: 250px;
+}
+#idNombre input{
+	width: 150px;
 }
 #idBtnReclamo{
 	margin-left: 100px;
@@ -106,7 +113,17 @@ article div {
 #idEstadisticas {
 	background-color: peru;
 }
-
+.container{
+	display: grid;
+	justify-content: center;
+}
+#botoneria{
+	display: flex;
+	justify-content: center;
+}
+#botoneria button{
+	margin: 2px;
+}
 #idBtnT {
 	background-color:lightgreen;
 }
@@ -127,12 +144,6 @@ table, th, td {
 		 aside{width: 95%;
 		background-color: yellow;}
  }
-
-.container{
-	display: grid;
-	place-content: center;
-}
-
 #idAgregarE label{
 	float: left;
 	width: 100px;
@@ -140,7 +151,12 @@ table, th, td {
 #idBtnD {
 	margin-left: 100px;
 }
-
-#botoneria {
-	margin-left: 170px;
+#idNombreD input{
+	width: 150px;
+}
+#idDireccionD input{
+	width: 150px;
+}
+#idFormEmpresa  select{
+	width: 177px;
 }
