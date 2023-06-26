@@ -1,3 +1,4 @@
+/*Marcos Eppinger 203654 - Emmanuel Alvarez 271176*/
 window.addEventListener("load", inicio)
 
 let sistema = new Sistema()
@@ -9,8 +10,11 @@ function inicio(){
 	document.getElementById("idCre").addEventListener("click", crearTabla);
     document.getElementById("idDecre").addEventListener("click", crearTabla);
     
+	document.getElementById("lupita").addEventListener("click", buscador);
+    
 	document.getElementById("idBoton").addEventListener("click", mostrarAgregarReclamos);
     document.getElementById("mIngresados").addEventListener("click", mostrarReclamos);
+    document.getElementById("mIngresados").addEventListener("click", mostrarReclamos2);
     document.getElementById("mPrincipal").addEventListener("click", mostrarPrincipal);
     document.getElementById("mAgregarE").addEventListener("click", mostrarAgregarEmpresa);
     document.getElementById("mEstadisticas").addEventListener("click", mostrarEstadisticas);
@@ -48,6 +52,8 @@ function mostrarAgregarReclamos(){
 function mostrarReclamos(){
 	ocultarTodos();
 	document.getElementById("idIngresados").style.display = "block";
+	
+
 }
 
 function ocultarTodos(){
@@ -56,6 +62,45 @@ function ocultarTodos(){
 	document.getElementById("idIngresados").style.display = "none";
 	document.getElementById("idEstadisticas").style.display = "none";
 	document.getElementById("idAgregarE").style.display = "none";
+}
+
+function mostrarReclamos2(){
+	let elem = document.getElementsByClassName("art");
+	for (let i = 0; i < elem.length; i++) {
+  		elem[i].style.display = "block";
+	}
+	let eleme = document.getElementsByClassName("div");
+	for (let i = 0; i < eleme.length; i++) {
+  		eleme[i].style.display = "block";
+	}	
+}
+
+function buscador(){
+	let input = document.getElementById("idBuscador").value
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName("buscar");
+	let x2 = document.getElementsByClassName("buscar2");
+	let art = document.getElementsByClassName("art")
+	
+	for (i = 0; i < x.length; i++){
+        if (x[i].innerHTML.toLowerCase().includes(input) ||
+		x2[i].innerHTML.toLowerCase().includes(input)){
+			mostrarReclamos();
+           
+			x[i].parentNode.style.display="block";
+			x[i].parentNode.parentNode.style.display="block";
+			x2[i].parentNode.style.display="block";
+			x2[i].parentNode.parentNode.style.display="block";
+		
+
+        }else{
+			x[i].parentNode.style.display="none";
+			x[i].parentNode.parentNode.style.display="none";
+			x2[i].parentNode.style.display="none";
+			x2[i].parentNode.parentNode.style.display="none";
+		}
+    }
+	
 }
 
 function agregarEmpresa(){
@@ -112,13 +157,17 @@ function agregarArt(){
 	let h4 = document.createElement("h4");
 	let re = document.createTextNode('Reclamo N. ' + cantidad);
 	h4.appendChild(re);
+	art1.className = "art";
 	art1.appendChild(h4);
 
 	let div = art.appendChild(document.createElement("div"));
+	div.className = "div";
 
 	let p1 = document.createElement("p");
+	p1.className = "buscar"
 	p1.innerHTML =  datos[0].nombre + ": " + datos[0].reclamo;
 	let p2 = document.createElement("p");
+	p2.className = "buscar2"
 	p2.innerHTML =  "Empresa: " + datos[0].empresa;
 	let p3 = document.createElement("p");
 	p3.innerHTML =  datos[0].texto;

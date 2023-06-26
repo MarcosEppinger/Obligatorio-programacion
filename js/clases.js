@@ -1,3 +1,4 @@
+/*Marcos Eppinger 203654 - Emmanuel Alvarez 271176*/
 class Sistema{
 	constructor(){
 		this.listaEmpresas = [];
@@ -97,7 +98,7 @@ class Sistema{
 			"Autos",
 			"Servicios",
 			"General"]
-		let arrayNum = [2, 2, 0, 0, 0, 0, 0]	
+		let arrayNum = [0, 0, 0, 0, 0, 0, 0]	
 		let arrayEmpresas = Array.from(this.darEmpresasCon())
 		let max = 0;
 		let res = { rubro: [], cant: 0 };
