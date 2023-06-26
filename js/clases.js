@@ -104,7 +104,7 @@ class Sistema{
     		}
   		}
 
-  return { elemento: maxRepetido, cantidad: maxCount };
+		return maxRepetido + ": cantidad: " + maxCount;
 	}
 }		
 	

@@ -222,8 +222,13 @@ function estadisticas(){
 	}	
 
 	let ul = document.getElementById("idUlMax");
+	ul.innerHTML = "";
 	let li = document.createElement('li')
-	li.innerHTML = sistema.darMayorRubro();
-	ul.appendChild(li);s
-
+	
+	let res = sistema.darMayorRubro();
+	if (res == ": cantidad: 0"){
+		res = "No hay reclamos"
+	}
+	li.innerHTML = res;	
+	ul.appendChild(li);
 }
