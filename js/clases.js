@@ -88,9 +88,27 @@ class Sistema{
 			arr.push(elem.rubro)
 	
 		}
-	console.log (arr)	
+		console.log (arr)
+
+		let contador = {};
+  		let maxRepetido = '';
+  		let maxCount = 0;
+
+  		for (let i = 0; i < arr.length; i++) {
+   			const elemento = arr[i];
+   			contador[elemento] = (contador[elemento] || 0) + 1;
+
+    	if (contador[elemento] > maxCount) {
+      		maxCount = contador[elemento];
+      		maxRepetido = elemento;
+    		}
+  		}
+
+  return { elemento: maxRepetido, cantidad: maxCount };
 	}
-}
+}		
+	
+
 
 class Empresa{
 	constructor(nombre, direccion, rubro){

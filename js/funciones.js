@@ -220,4 +220,10 @@ function estadisticas(){
 		p2.innerHTML = "El promedio de las cantidades considerando todos los reclamos " +
 		"de todas las empresas es " + promedio;
 	}	
+
+	let ul = document.getElementById("idUlMax");
+	let li = document.createElement('li')
+	li.innerHTML = sistema.darMayorRubro();
+	ul.appendChild(li);s
+
 }
