@@ -8,7 +8,15 @@ function inicio(){
 	document.getElementById("idBtnReclamo").addEventListener("click", agregarReclamo)
 	document.getElementById("idCre").addEventListener("click", crearTabla);
     document.getElementById("idDecre").addEventListener("click", crearTabla);
+    
+	document.getElementById("idBoton").addEventListener("click", mostrarAgregarReclamos);
+    document.getElementById("mIngresados").addEventListener("click", mostrarReclamos);
+    document.getElementById("mPrincipal").addEventListener("click", mostrarPrincipal);
+    document.getElementById("mAgregarE").addEventListener("click", mostrarAgregarEmpresa);
+    document.getElementById("mEstadisticas").addEventListener("click", mostrarEstadisticas);
+	
 	actualizar();
+	mostrarPrincipal();
 }
 
 function actualizar(){
@@ -18,6 +26,38 @@ function actualizar(){
 	estadisticas()
 }	
 
+function mostrarEstadisticas(){
+	ocultarTodos();
+	document.getElementById("idEstadisticas").style.display = "block";
+}
+
+function mostrarAgregarEmpresa(){
+	ocultarTodos();
+	document.getElementById("idAgregarE").style.display = "block";
+}
+
+function mostrarPrincipal(){
+	ocultarTodos();
+	document.getElementById("idPrincipal").style.display = "block";
+}
+
+function mostrarAgregarReclamos(){
+	ocultarTodos();
+	document.getElementById("idReclamos").style.display = "block";
+}
+
+function mostrarReclamos(){
+	ocultarTodos();
+	document.getElementById("idIngresados").style.display = "block";
+}
+
+function ocultarTodos(){
+	document.getElementById("idPrincipal").style.display = "none";
+	document.getElementById("idReclamos").style.display = "none";
+	document.getElementById("idIngresados").style.display = "none";
+	document.getElementById("idEstadisticas").style.display = "none";
+	document.getElementById("idAgregarE").style.display = "none";
+}
 
 function agregarEmpresa(){
 	let miForm = document.getElementById("idFormEmpresa")
