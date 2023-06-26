@@ -20,6 +20,15 @@ class Sistema{
 	darUltimoReclamo(){
 		return this.listaReclamos.slice(-1);
 	}
+	existeEmpresa(empresa){
+        let existe = false;
+        for (let i = 0; i < this.listaEmpresas.length && !existe; i++) {
+            if (this.listaEmpresas[i].nombre.toLowerCase() === empresa.toLowerCase()){
+                existe = true;
+            }
+        }
+        return existe;
+    }
 	darCantidadDeReclamos(emp){
 		let suma = 0;
 		for (let elem of this.listaReclamos){
@@ -88,7 +97,7 @@ class Sistema{
 			arr.push(elem.rubro)
 	
 		}
-		console.log (arr)
+		//console.log (arr)
 
 		let contador = {};
   		let maxRepetido = '';

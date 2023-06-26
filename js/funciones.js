@@ -62,12 +62,17 @@ function ocultarTodos(){
 function agregarEmpresa(){
 	let miForm = document.getElementById("idFormEmpresa")
 	if(miForm.reportValidity()){
-		let nom=document.getElementById("idNombreD").value;
-		let dire=document.getElementById("idDireccionD").value;
-		let rubro=document.getElementById("idRubroD").value;
-		sistema.agregarEmpresa(new Empresa(nom, dire, rubro))
-		miForm.reset();
-		actualizar();
+		let nom = document.getElementById("idNombreD").value;
+		let dire = document.getElementById("idDireccionD").value;
+		let rubro = document.getElementById("idRubroD").value;
+		if (sistema.existeEmpresa(nom)){
+			alert ("Esta empresa ya está registrada.")
+			miForm.reset();
+		}else{
+			sistema.agregarEmpresa(new Empresa(nom, dire, rubro))
+			miForm.reset();
+			actualizar();
+		}
 	}
 }
 
